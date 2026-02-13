@@ -6,39 +6,69 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-
 </head>
+
 <body>
 
-    <header>
-        <h1>Five nights at C0pe's</h1>
-        <p>Découvrez une nouvelle expérience incroyable.</p>
-    </header>
+<nav>
+    <ul>
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#screenshots">Screenshots</a></li>
+        <li><a href="#gameplay">Gameplay</a></li>
+        <li><a href="#download">Download</a></li>
+    </ul>
+</nav>
 
-    <section class="images">
-        <h2>📸 Screenshots</h2>
+<header id="accueil" class="hero">
+    <div class="overlay"></div>
+    <h1 class="glitch" data-text="Five nights at C0pe's">
+        Five nights at C0pe's
+    </h1>
+    <p class="fade-in">Découvrez une nouvelle expérience incroyable.</p>
+</header>
+
+<section class="images fade-in" id="screenshots">
+    <h2>📸 Screenshots</h2>
+    <div class="grid">
         <img src="assets/image1.jpg" alt="Image du jeu">
         <img src="assets/image2.png" alt="Image du jeu">
-    </section>
+    </div>
+</section>
 
-    <section class="videos">
-        <h2>🎥 Gameplay</h2>
-        <video controls width="500">
-            <source src="assets/Premiertiktok.mp4" type="video/mp4">
-        </video>
-    </section>
-    
-    <section class="download">
-        <h2>⬇ Télécharger</h2>
-        <img src="assets/image3.png" alt="Image du jeu">
-        <a href="https://www.mediafire.com/file/i643bud5gh3u563/A_deux.wav/file" target="_blank" class="btn">
-            Télécharger le jeu
-        </a>
-    </section>
+<section class="videos fade-in" id="gameplay">
+    <h2>🎥 Gameplay</h2>
+    <video controls>
+        <source src="assets/Premiertiktok.mp4" type="video/mp4">
+    </video>
+</section>
 
-    <footer>
-        <p>© 2026 Five nights at C0pe's - Tous droits réservés</p>
-    </footer>
+<section class="download fade-in" id="download">
+    <h2>⬇ Télécharger</h2>
+    <img src="assets/image3.png" alt="Image du jeu">
+    <a href="https://www.mediafire.com/file/i643bud5gh3u563/A_deux.wav/file" target="_blank" class="btn">
+        Télécharger le jeu
+    </a>
+</section>
+
+<footer>
+    <p>© 2026 Five nights at C0pe's - Tous droits réservés</p>
+</footer>
+
+<script>
+document.documentElement.classList.add("js");
+
+const faders = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.2 });
+
+faders.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
