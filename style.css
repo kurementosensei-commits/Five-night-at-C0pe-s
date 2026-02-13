@@ -1,11 +1,15 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* transition smooth menu */
 }
 
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #0f0f0f;
     color: white;
     text-align: center;
@@ -19,97 +23,72 @@ nav {
     position: sticky;
     top: 0;
     z-index: 9999;
-    border-bottom: 1px solid #222;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 40px;
     flex-wrap: wrap;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: bold;
     font-size: 18px;
-    transition: 0.3s;
+    transition: color 0.3s ease;
 }
 
 nav a:hover {
-    color: #ff2a2a;
+    color: red;
 }
 
 /* ================= HERO ================= */
 
 .hero {
-    position: relative;
-    padding: 120px 20px;
+    padding: 140px 20px;
     background-image: url("https://www.shutterstock.com/image-illustration/dark-red-black-gradient-background-600nw-2490757937.jpg");
     background-size: cover;
     background-position: center;
-    overflow: hidden;
+    position: relative;
 }
 
-.overlay {
+/* overlay sombre */
+.hero::after {
+    content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(2px);
+    background: rgba(0,0,0,0.6);
 }
 
-/* ================= GLITCH ================= */
-
-.glitch {
+.hero * {
     position: relative;
-    font-size: 3.5rem;
     z-index: 2;
 }
 
-.glitch::before,
-.glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    left: 0;
-    width: 100%;
+/* ================= GLITCH FIX IPHONE ================= */
+
+.glitch span {
+    font-size: 3.5rem;
+    position: relative;
+    display: inline-block;
+    animation: glitch 1s infinite;
 }
 
-.glitch::before {
-    color: red;
-    animation: glitch1 1s infinite;
-}
-
-.glitch::after {
-    color: cyan;
-    animation: glitch2 1.5s infinite;
-}
-
-@keyframes glitch1 {
-    0% { transform: translate(0); }
-    20% { transform: translate(-2px, -2px); }
-    40% { transform: translate(-2px, 2px); }
-    60% { transform: translate(2px, -2px); }
-    80% { transform: translate(2px, 2px); }
-    100% { transform: translate(0); }
-}
-
-@keyframes glitch2 {
-    0% { transform: translate(0); }
-    20% { transform: translate(2px, 2px); }
-    40% { transform: translate(2px, -2px); }
-    60% { transform: translate(-2px, 2px); }
-    80% { transform: translate(-2px, -2px); }
-    100% { transform: translate(0); }
+@keyframes glitch {
+    0% { text-shadow: 2px 2px red, -2px -2px cyan; }
+    25% { text-shadow: -2px 2px red, 2px -2px cyan; }
+    50% { text-shadow: 2px -2px red, -2px 2px cyan; }
+    75% { text-shadow: -2px -2px red, 2px 2px cyan; }
+    100% { text-shadow: 2px 2px red, -2px -2px cyan; }
 }
 
 .hero p {
     margin-top: 20px;
     font-size: 1.2rem;
     opacity: 0.8;
-    position: relative;
-    z-index: 2;
 }
 
 /* ================= SECTIONS ================= */
@@ -125,7 +104,7 @@ section h2 {
     margin-bottom: 40px;
 }
 
-/* ================= GRID IMAGES ================= */
+/* ================= GRID ================= */
 
 .grid {
     display: grid;
@@ -136,7 +115,7 @@ section h2 {
 .grid img {
     width: 100%;
     border-radius: 15px;
-    transition: 0.4s;
+    transition: transform 0.4s ease;
 }
 
 .grid img:hover {
@@ -160,26 +139,32 @@ section h2 {
     gap: 40px;
 }
 
+/* =================== */
+/* 🔥 TAILLE IMAGE ICI */
+/* =================== */
+
 .download img {
     width: 100%;
-    max-width: 550px;
-    border-radius: 15px;
-    transition: 0.4s;
+    max-width: 750px; /* ⬅⬅⬅ CHANGE CE NOMBRE POUR AGRANDIR OU RÉDUIRE */
+    border-radius: 20px;
+    transition: transform 0.4s ease;
 }
 
 .download img:hover {
     transform: scale(1.05);
 }
 
+/* ================= BOUTON ================= */
+
 .btn {
-    padding: 18px 40px;
+    padding: 20px 50px;
     background: linear-gradient(45deg, #ff0000, #ff5a00);
     color: white;
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
     border-radius: 50px;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
@@ -190,9 +175,7 @@ section h2 {
 
 footer {
     padding: 40px;
-    background: #000;
-    border-top: 1px solid #222;
-    font-size: 0.9rem;
+    background: black;
     opacity: 0.6;
 }
 
@@ -205,7 +188,7 @@ footer {
 .js .fade-in {
     opacity: 0;
     transform: translateY(40px);
-    transition: 1s ease;
+    transition: all 1s ease;
 }
 
 .js .fade-in.visible {
@@ -217,7 +200,7 @@ footer {
 
 @media (max-width: 768px) {
 
-    .glitch {
+    .glitch span {
         font-size: 2.2rem;
     }
 
@@ -225,12 +208,7 @@ footer {
         padding: 70px 15px;
     }
 
-    nav ul {
-        gap: 25px;
-    }
-
-    .btn {
-        font-size: 16px;
-        padding: 15px 25px;
+    .download img {
+        max-width: 95%;
     }
 }

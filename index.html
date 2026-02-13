@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Five nights at C0pe's</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Five nights at C0pe's</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -20,9 +20,8 @@
 </nav>
 
 <header id="accueil" class="hero">
-    <div class="overlay"></div>
-    <h1 class="glitch" data-text="Five nights at C0pe's">
-        Five nights at C0pe's
+    <h1 class="glitch">
+        <span>Five nights at C0pe's</span>
     </h1>
     <p class="fade-in">Découvrez une nouvelle expérience incroyable.</p>
 </header>
@@ -30,8 +29,8 @@
 <section class="images fade-in" id="screenshots">
     <h2>📸 Screenshots</h2>
     <div class="grid">
-        <img src="assets/image1.jpg" alt="Image du jeu">
-        <img src="assets/image2.png" alt="Image du jeu">
+        <img src="assets/image1.png" alt="">
+        <img src="assets/image2.png" alt="">
     </div>
 </section>
 
@@ -44,7 +43,7 @@
 
 <section class="download fade-in" id="download">
     <h2>⬇ Télécharger</h2>
-    <img src="assets/image3.png" alt="Image du jeu">
+    <img src="assets/image3.png" alt="">
     <a href="https://www.mediafire.com/file/i643bud5gh3u563/A_deux.wav/file" target="_blank" class="btn">
         Télécharger le jeu
     </a>
@@ -57,17 +56,15 @@
 <script>
 document.documentElement.classList.add("js");
 
-const faders = document.querySelectorAll('.fade-in');
-
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+      entry.target.classList.add("visible");
     }
   });
 }, { threshold: 0.2 });
 
-faders.forEach(el => observer.observe(el));
+document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 </script>
 
 </body>
